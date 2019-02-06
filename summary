@@ -1,0 +1,2 @@
+#Import OpenCV to the project
+import cv2
