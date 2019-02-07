@@ -53,12 +53,19 @@ rotated = cv2.warpAffine(image, M, (width, height))
 M = np.float32([[1, 0, 25], [0, 1, 50]])  #Define o shift da imagem 25 pixels para a direita e 50 pixels para baixo.
 shifted = cv2.warpAffine(image, M, (width, height))
 
-#Redimensionar (Resize)
+#Redimensionar (resize)
 r = 150.0 / image.shape[1]
 dim = (150, int(image.shape[0] * r))  #Referente ao o "aspect ratio" da imagem. 
 resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
+#Inverter (flip)
+flipped = cv2.flip(image, 1)
 
+#Adicionar (add)
+added = cv2.add(image, filter)
+
+#Subtrair (subtract)
+subtracted = cv2.subtract(image, filter)
 
 
 
