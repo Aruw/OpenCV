@@ -1,2 +1,34 @@
 #Import OpenCV to the project
 import cv2
+
+# ----------------------------------  Main Methods
+#Carrega a image
+cv2.imshow("dir/file.jpg")
+
+#Exibe a imagem
+cv2.imshow("Titulo da janela", imagem)
+
+#Sava a imagem
+cv2.imwrite("dir/file.jpg", imagem)
+
+#Aguarda X-milisegundos quando uma tecla é pressionada
+cv2.waitKey(miliseconds)
+
+#Fecha todas as janelas
+cv2.destroyAllWindows()
+
+# ----------------------------------  
+
+#Adicionar Texto
+cv2.putText(image, "Texto da imagem", (15,15), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
+              #img, text, org, fontFace, fontScale, color, thickness, lineType, bottomLeftOrigin
+
+#Desenhar Linha
+cv2.line(image, (0, 0), (300, 300), (0, 255, 0))
+
+#Desenha Retangulo
+cv2.rectangle(image, (10, 10), (60, 60), (0, 0, 255))
+
+#Desenha Circulo
+cv2.circle(image, (150, 150), 150, (255, 0, 0))
+
