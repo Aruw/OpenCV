@@ -1,7 +1,7 @@
 #Import OpenCV to the project
 import cv2
 
-# ----------------------------------  Main Methods
+# ----------------------------------  Metodos principais
 #Carrega a image
 cv2.imshow("dir/file.jpg")
 
@@ -20,8 +20,17 @@ cv2.destroyAllWindows()
 #Retorna as dimensões da imagem
 height, width, channels = image.shape
 
-# ----------------------------------  Desenhar Formas
+# ----------------------------------  Conversão de Espaços de Cor
+#BRG para Cinza (gray)
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+#BGR para HSV
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+
+#BGR para LAB
+lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+
+# ----------------------------------  Desenhar Formas
 #Adicionar Texto (putText)
 cv2.putText(image, "Texto da imagem", (15,15), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
               #img, text, org, fontFace, fontScale, color, thickness, lineType, bottomLeftOrigin
@@ -44,7 +53,6 @@ pts = pts.reshape((-1,1,2))
 cv2.polylines(img,[pts],True,(0,255,255))
 
 # ----------------------------------  Transformações Geometricas
-
 #Rotaciona a Imagem (rotate)
 M = cv2.getRotationMatrix2D((width//2, height//2), 45, 1.0)
 rotated = cv2.warpAffine(image, M, (width, height))
@@ -59,7 +67,6 @@ dim = (150, int(image.shape[0] * r))  #Referente ao o "aspect ratio" da imagem.
 resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
 # ----------------------------------  Operações com Arrays
-
 #Inverter (flip)
 flipped = cv2.flip(image, 1)
 
