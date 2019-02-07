@@ -17,7 +17,7 @@ cv2.waitKey(miliseconds)
 #Fecha todas as janelas
 cv2.destroyAllWindows()
 
-# ----------------------------------  
+# ----------------------------------  Desenhar Formas
 
 #Adicionar Texto
 cv2.putText(image, "Texto da imagem", (15,15), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
@@ -27,8 +27,18 @@ cv2.putText(image, "Texto da imagem", (15,15), cv2.FONT_HERSHEY_SIMPLEX, 2, (255
 cv2.line(image, (0, 0), (300, 300), (0, 255, 0))
 
 #Desenha Retangulo
-cv2.rectangle(image, (10, 10), (60, 60), (0, 0, 255))
+cv2.rectangle(image, (15, 15), (300, 300), (0, 255, 0), 3)
 
 #Desenha Circulo
-cv2.circle(image, (150, 150), 150, (255, 0, 0))
+cv2.circle(image, (150, 150), 150, (0,0,255), -1)
+
+#Desenhar Elipse
+cv2.ellipse(image, (256,256), (100,50), 0, 0, 180, 255, -1)
+
+#Desenhar Poligono
+pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
+pts = pts.reshape((-1,1,2))
+cv2.polylines(img,[pts],True,(0,255,255))
+
+# ----------------------------------  Desenhar Formas
 
