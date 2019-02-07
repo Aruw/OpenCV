@@ -69,5 +69,26 @@ added = cv2.add(image, filter)
 #Subtrair (subtract)
 subtracted = cv2.subtract(image, filter)
 
+#BitwiseAnd 
+bitwiseAnd = cv2.bitwise_and(rectangle, circle)
+
+#BitwiseOr
+bitwiseOr = cv2.bitwise_or(rectangle, circle)
+
+#BitwiseXor
+bitwiseXor = cv2.bitwise_xor(rectangle, circle)
+
+#BitwiseNot
+bitwiseNot = cv2.bitwise_not(circle)
+
+#Mascara (mask)
+masked = cv2.bitwise_and(image, image, mask = mask)
+
+#Separar canais (split)
+(B, G, R) = cv2.split(image)
+
+#Juntar os canais (merge)
+merged = cv2.merge([B, G, R])
+
 
 
