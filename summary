@@ -17,28 +17,48 @@ cv2.waitKey(miliseconds)
 #Fecha todas as janelas
 cv2.destroyAllWindows()
 
+#Retorna as dimensões da imagem
+height, width, channels = image.shape
+
 # ----------------------------------  Desenhar Formas
 
-#Adicionar Texto
+#Adicionar Texto (putText)
 cv2.putText(image, "Texto da imagem", (15,15), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
               #img, text, org, fontFace, fontScale, color, thickness, lineType, bottomLeftOrigin
 
-#Desenhar Linha
-cv2.line(image, (0, 0), (300, 300), (0, 255, 0))
+#Desenhar Linha (line)
+cv2.line(image, (0, 0), (300, 300), (0, 255, 0), 3)
 
-#Desenha Retangulo
+#Desenha Retangulo (rectangle)
 cv2.rectangle(image, (15, 15), (300, 300), (0, 255, 0), 3)
 
-#Desenha Circulo
+#Desenha Circulo (circle)
 cv2.circle(image, (150, 150), 150, (0,0,255), -1)
 
-#Desenhar Elipse
+#Desenhar Elipse (ellipse)
 cv2.ellipse(image, (256,256), (100,50), 0, 0, 180, 255, -1)
 
-#Desenhar Poligono
+#Desenhar Poligono (polylines)
 pts = np.array([[10,5],[20,30],[70,20],[50,10]], np.int32)
 pts = pts.reshape((-1,1,2))
 cv2.polylines(img,[pts],True,(0,255,255))
 
-# ----------------------------------  Desenhar Formas
+# ----------------------------------  Transformações Geometricas
+
+#Rotaciona a Imagem (rotate)
+M = cv2.getRotationMatrix2D((width//2, height//2), 45, 1.0)
+rotated = cv2.warpAffine(image, M, (width, height))
+
+#Translação (shift)
+M = np.float32([[1, 0, 25], [0, 1, 50]])  #Define o shift da imagem 25 pixels para a direita e 50 pixels para baixo.
+shifted = cv2.warpAffine(image, M, (width, height))
+
+#Redimensionar (Resize)
+r = 150.0 / image.shape[1]
+dim = (150, int(image.shape[0] * r))  #Referente ao o "aspect ratio" da imagem. 
+resized = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
+
+
+
 
