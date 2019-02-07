@@ -162,5 +162,20 @@ wide = cv2.Canny(blurred, 10, 200)
 # ----------------------------------  Contornos
 #Encontra todos os contornos na imagem e desenha TODOS os contornos da imagem
 (_, cnts, _) = cv2.findContours(canny.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) #Destrutivo
+(_, cnts, _) = cv2.findContours(gray.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) #Destrutivo
 cv2.drawContours(image, cnts, -1, (0, 255, 0), 2) #Destrutivo
 
+#Calcula a area de um contorno 
+area = cv2.contourArea(cnt)
+
+#Calcula o perimetro de um contorno
+perimeter = cv2.arcLength(c, True)
+
+#Moments  (Image moments help you to calculate some features like center of mass)
+M = cv2.moments(c)
+
+#
+approx = cv2.approxPolyDP(c, 0.01 * peri, True)
+
+#
+(x, y, w, h) = cv2.boundingRect(approx)
