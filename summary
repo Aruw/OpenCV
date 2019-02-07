@@ -97,5 +97,21 @@ masked = cv2.bitwise_and(image, image, mask = mask)
 #Juntar os canais (merge)
 merged = cv2.merge([B, G, R])
 
+# ----------------------------------  
+#Calcula o Histograma
+hist = cv2.calcHist([image], [0], None, [256], [0, 256]) 
+
+#Equalização do Histograma
+equalized = cv2.equalizeHist(image)
+
+# ----------------------------------  
+#Borrar Mediana (medianBlur)
+median = cv2.medianBlur(image, 3)
+
+#Filtro Media (Averaging Filter)
+blurred = cv2.blur(image, (5, 5))
+
+#Filtro Gaussiano (GaussianBlur)
+blurred = cv2.GaussianBlur(image, (kX, kY), 0)
 
 
