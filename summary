@@ -114,4 +114,25 @@ blurred = cv2.blur(image, (5, 5))
 #Filtro Gaussiano (GaussianBlur)
 blurred = cv2.GaussianBlur(image, (kX, kY), 0)
 
+# ----------------------------------  Transformaçõe Morfologicas 
+#Erosão (erode)
+eroded = cv2.erode(gray, None, iterations = 3)
+
+#Dilatação (dilate)
+dilated = cv2.dilate(gray, None, iterations= 1)
+
+#Abrir (opening)
+opening = cv2.morphologyEx(img, cv2.MORPH_OPEN, kernel)
+
+#Fechar (closing)
+closing = cv2.morphologyEx(img, cv2.MORPH_CLOSE, kernel)
+
+#Morphological Gradient
+gradient = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
+
+#Top Hat
+tophat = cv2.morphologyEx(img, cv2.MORPH_TOPHAT, kernel)
+
+#Black Hat
+blackhat = cv2.morphologyEx(img, cv2.MORPH_BLACKHAT, kernel)
 
