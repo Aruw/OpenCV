@@ -179,3 +179,7 @@ approx = cv2.approxPolyDP(c, 0.01 * peri, True)
 
 #
 (x, y, w, h) = cv2.boundingRect(approx)
+
+# ----------------------------------  CASCADE CLASSIFIER
+detector = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
+rects = detector.detectMultiScale(gray, scaleFactor=1.08, minNeighbors=9, minSize=(30, 30), flags = cv2.CASCADE_SCALE_IMAGE)
