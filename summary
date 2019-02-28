@@ -183,3 +183,9 @@ approx = cv2.approxPolyDP(c, 0.01 * peri, True)
 # ----------------------------------  CASCADE CLASSIFIER
 detector = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 rects = detector.detectMultiScale(gray, scaleFactor=1.08, minNeighbors=9, minSize=(30, 30), flags = cv2.CASCADE_SCALE_IMAGE)
+
+
+# ----------------------------------  TEMPLATE MATCHING
+result = cv2.matchTemplate(source, template, cv2.TM_CCOEFF)
+(minVal, maxVal, minLoc, (x, y)) = cv2.minMaxLoc(result)
+cv2.rectangle(source, (x, y), (x + tempW, y + tempH), (0, 255, 0), 2)
